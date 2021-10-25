@@ -4,7 +4,7 @@
 Game::Game(){
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				board[i][j] = Player::none;
+				board[i][j] = none;
 			}
 		}
 	}
@@ -21,13 +21,13 @@ void Game::printBoard(){
 bool Game::isTie() {
 	for (unsigned int i = 0; i < 3; i++)
 	{
-		if (board[i][0] == Player::none || board[i][1] == Player::none || board[i][2] == Player::none)
+		if (board[i][0] == none || board[i][1] == none || board[i][2] == none)
 			return false;
 	}
 	return true;
 }
 
-bool Game::checkWinner(Player player) {
+bool Game::checkWinner(char player) {
 
 	// diagonal Win
 	if (board[0][0] == player && board[1][1] == player && board[2][2] == player)
@@ -51,7 +51,7 @@ bool Game::checkWinner(Player player) {
 }
 
 void Game::getPlayerMove() {
-	bool fail = true;
+	bool invalidInput = true;
 	int x = -1, y = -1;
 
 	do {
@@ -60,12 +60,12 @@ void Game::getPlayerMove() {
 		std::cout << "Type y-Coord : ";
 		std::cin >> y;
 
-		fail = board[x][y] != Player::none;
-		if (fail) {
+		invalidInput = board[x][y] != none;
+		if (invalidInput) {
 			std::cout << "Only numbers betweeen 0-2 ! or coords already taken !" << std::endl;
 		}
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	} while (fail);
-	board[x][y] = Player::player;
+	} while (invalidInput);
+	board[x][y] = player;
 }

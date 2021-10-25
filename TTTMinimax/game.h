@@ -1,21 +1,17 @@
 #pragma once
 #include<iostream>
 
-enum class Player {
-	player = 'X',
-	ai = 'O',
-	none = 'n'
-};
 
 class Game {
 public:
-
-	Player board[3][3];
+	char player = 'X', ai = 'O', none = 'n';
+	char board[3][3];
 
 	Game();
+
+	bool checkWinner(char player);
 	void printBoard();
-	bool isTie();
-	bool checkWinner(Player player);
 	void getPlayerMove();
+	bool isTie();
 
 };

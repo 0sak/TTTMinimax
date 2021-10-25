@@ -2,7 +2,7 @@
 #include"game.h"
 
 
-struct Move {
+struct aiNextMove {
 	int x = 0;
 	int y = 0;
 };
@@ -15,8 +15,8 @@ public:
 
 	Game game;
 	
-	Move minimax();
-	int maxValue(int alpha, int beta);
-	int minValue(int alpha, int beta);
 	void play();
+	int maxValue(int alpha, int beta);
+	aiNextMove minimax();
+	int minValue(int alpha, int beta);
 };
